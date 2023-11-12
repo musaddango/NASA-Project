@@ -8,7 +8,7 @@ function httpAddNewLaunch (req, res){
     const launch = req.body;
     launch.launchDate = new Date(launch.launchDate);
     addNewLaunch(launch);
-    res.status(200).end("launch post success")
+    return res.status(201).json(launch)
 }
 
 module.exports = {
