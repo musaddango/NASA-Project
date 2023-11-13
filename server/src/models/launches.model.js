@@ -27,7 +27,6 @@ function addNewLaunch(launch){
         upcoming: true,
         success: true,
         })
-    console.log(launches.get(latestFlightNumber))
 }
 
 module.exports = {
