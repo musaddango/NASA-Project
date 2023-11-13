@@ -25,7 +25,19 @@ async function httpGetLaunches() {
 
 // Submit given launch data to launch system.
 async function httpSubmitLaunch(launch) {
-  
+  await fetch(`http://localhost:8000/launches`,{
+    method: "post",
+    headers:{
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(launch),
+  })
+  .then(()=>{
+    return {ok: true};
+  })
+  .catch((err)=>{
+    return  {ok: false};
+  })
 }
 
 // Delete launch with given ID.
