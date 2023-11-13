@@ -20,7 +20,7 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
   }, [getLaunches]);
 
   const submitLaunch = useCallback(async (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     setPendingLaunch(true);
     const data = new FormData(e.target);
     const launchDate = new Date(data.get("launch-day"));
