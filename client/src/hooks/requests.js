@@ -32,8 +32,9 @@ async function httpSubmitLaunch(launch) {
     },
     body: JSON.stringify(launch),
   })
-  .then(()=>{
-    return true;
+  .then((response)=>{
+    console.log(response)
+    return response;
   })
   .catch((err)=>{
     return false;
