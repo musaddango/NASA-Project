@@ -33,10 +33,10 @@ async function httpSubmitLaunch(launch) {
     body: JSON.stringify(launch),
   })
   .then(()=>{
-    return {ok: true};
+    return true;
   })
   .catch((err)=>{
-    return  {ok: false};
+    return false;
   })
 }
 
