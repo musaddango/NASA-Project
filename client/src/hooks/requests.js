@@ -25,7 +25,7 @@ async function httpGetLaunches() {
 
 // Submit given launch data to launch system.
 async function httpSubmitLaunch(launch) {
-  await fetch(`http://localhost:8000/launches`,{
+  await fetch(`${API_URL}/launches`,{
     method: "post",
     headers:{
       "Content-Type": "application/json",
