@@ -31,19 +31,25 @@ async function httpSubmitLaunch(launch) {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(launch),
-  })
-  .then((response)=>{
-    console.log(response)
-    return response;
-  })
-  .catch((err)=>{
-    return false;
-  })
+    })
+    .then((response)=>{
+      console.log(response)
+      return response;
+    })
+    .catch((err)=>{
+      return false;
+    })
 }
 
 // Delete launch with given ID.
 async function httpAbortLaunch(id) {
-  
+  return await fetch(`${API_URL}/launches/${id}`,{
+      method: "delete",
+    })
+    .then((response)=> response)
+    .catch((err)=> {
+      return {ok: false}
+    }) 
 }
 
 export {

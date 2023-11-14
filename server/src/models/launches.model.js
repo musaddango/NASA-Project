@@ -29,7 +29,12 @@ function addNewLaunch(launch){
         })
 }
 
+function abortLaunch(flightNumber){
+
+}
+
 module.exports = {
     getAllLaunches,
     addNewLaunch,
+    abortLaunch,
 }
