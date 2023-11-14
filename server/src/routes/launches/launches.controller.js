@@ -23,19 +23,14 @@ function httpAddNewLaunch (req, res){
 }
 
 function httpAbortLaunch(req, res){
-    const launchId = req.params.id;
-    if(existsLaunchWithId(launchId)){
+    const launchId = Number(req.params.id);
+    if(!existsLaunchWithId(launchId)){
         return res.status(404).json({
-            error: "launch not found",
+            error: "Launch not found",
         })
     }
-    if (!id || isNaN(Number(launchId))){
-        return res.status(400).json({
-            error: "Launch id"
-        });
-    }
-    abortLaunch(id);
-    return res.status(200).json();
+    const aborted = abortLaunch(launchId);
+    return res.status(200).json(aborted);
 }
 
 module.exports = {

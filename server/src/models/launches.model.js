@@ -35,12 +35,15 @@ function addNewLaunch(launch){
 }
 
 function abortLaunch(flightNumber){
-    
+    const aborted = launches.get(flightNumber);
+    aborted.upcoming = false;
+    aborted.success = false;
+    return aborted;
 }
 
 module.exports = {
+    existsLaunchWithId,
     getAllLaunches,
     addNewLaunch,
     abortLaunch,
-    existsLaunchWithId,
 }
