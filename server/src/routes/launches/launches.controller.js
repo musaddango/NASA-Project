@@ -28,7 +28,7 @@ function httpAbortLaunch(req, res){
         return res.status(400).json(err.message);
     }
     abortLaunch(id);
-    return res.status(200).json("Mission aborted");
+    return res.status(200).json();
 }
 
 module.exports = {

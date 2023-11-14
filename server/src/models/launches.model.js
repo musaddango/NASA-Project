@@ -1,3 +1,5 @@
+const launches = new Map();
+
 const launch = {
     flightNumber: 100,
     mission: 'Kepler Exploration X',
@@ -10,7 +12,6 @@ const launch = {
 }
 
 let latestFlightNumber = launch.flightNumber;
-const launches = new Map();
 
 launches.set(launch.flightNumber, launch);
 
@@ -30,7 +31,11 @@ function addNewLaunch(launch){
 }
 
 function abortLaunch(flightNumber){
-
+    const array = Array.from(launches.keys());
+    console.log(`Array keys: ${array}`)
+    if (!(flightNumber in array)){
+    }
+    launches.delete(flightNumber);
 }
 
 module.exports = {
