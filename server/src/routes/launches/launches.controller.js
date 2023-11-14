@@ -5,7 +5,7 @@ function httpGetAllLaunches(req, res){
 }
 
 function httpAddNewLaunch (req, res){
-    const launch = req.body;
+    const launch = req.body; 
     const { mission, launchDate, target, rocket } = req.body;
     if(!mission || !launchDate || !target || !rocket){
         return res.status(400).json({
@@ -17,7 +17,7 @@ function httpAddNewLaunch (req, res){
         return res.status(400).json({
             error:"Invalid launch date input",
         })
-    }
+    } 
     addNewLaunch(launch);
     return res.status(201).json(launch)
 }
