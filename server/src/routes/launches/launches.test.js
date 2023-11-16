@@ -31,10 +31,30 @@ describe("Test POST /launch", ()=>{
 
         const responseDate = new Date(response.body.date).valueOf();
         const requestDate = new Date(completeSentData.date).valueOf();
+        
         expect(responseDate).toBe(requestDate);
-        expect(response.body)
-        .toMatchObject(sentDataWithoutDate);
+        expect(response.body).toMatchObject(sentDataWithoutDate);
     });
-    test("It should respond with 200 success",async ()=>{});
-    test("It should catch Invalid launch date input",async ()=>{});
+
+    test("It should respond with 400 bad request",async ()=>{
+        const response = await request(app)
+            .post("/launches")
+            .send(sentDataWithoutDate)
+            .expect("Content-Type",/json/)
+            .expect(400);
+        expect(response.body).toStrictEqual({
+            error: "Missing required launch property."
+        });
+    });
+
+    test("It should catch Invalid launch date input",async ()=>{
+        const response = await request(app)
+            .post("/launches")
+            .send({...sentDataWithoutDate, launchDate: "nothing"})
+            .expect("Content-Type",/json/)
+            .expect(400);
+        expect(response.body).toStrictEqual({
+            error:"Invalid launch date input",
+        })
+    });
 });
