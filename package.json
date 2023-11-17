@@ -6,11 +6,10 @@
   "scripts": {
     "install-server":"npm install --prefix server",
     "install-client":"npm install --prefix client",
-    "install":"npm install-server && npm install-client",
     "build":"npm run build --prefix client",
     "server":"npm run watch --prefix server",
     "client":"npm run start --prefix client",
-    "deploy":"npm run build && npm run start --prefix server",
+    "deploy":"npm run build && npm run production --prefix server",
     "start": "npm run server & npm run client",
     "test": "npm test --prefix server && npm test --prefix client"
   },
