@@ -36,8 +36,9 @@ async function loadPlanetsData(){
 }
 
 function getAllPlanets(){
-    return habitablePlanets;
+    return habitablePlanets; 
 }
+console.log("From planets model: ",getAllPlanets());
 
 module.exports = {
     getAllPlanets,
