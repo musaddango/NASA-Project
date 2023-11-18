@@ -16,7 +16,9 @@ async function httpGetPlanets() {
 async function httpGetLaunches() {
   try{
     const response = await axios(`${API_URL}/launches`);
-    return await response.data.sort((a, b)=> a.flightNumber - b.flightNumber);
+    return await response.data.sort((a, b)=> {
+      return a.flightNumber - b.flightNumber
+    });
     
   }catch(err){
     throw new Error(err.message);
