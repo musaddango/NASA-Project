@@ -19,8 +19,7 @@ async function loadPlanetsData(){
             columns: true
         }))
         .on('data', (data)=>{
-            if(isHabitable(data)){
-                // const strData = JSON.stringify(data);
+            if(isHabitable(data)){ 
                 habitablePlanets.push(data);
             }
         })
