@@ -13,7 +13,7 @@ const launch = {
     success: true,
 }
 
-let latestFlightNumber = launch.flightNumber;
+let latestFlightNumber = 100;
 
 saveLaunch(launch);
 saveLaunch(launch);
@@ -43,7 +43,10 @@ async function saveLaunch(launch){
         latestFlightNumber += 1;
         await launchesDatabase.updateOne({
             flightNumber: latestFlightNumber,
-        }, launch, {
+        }, { 
+            ...launch,
+            flightNumber: latestFlightNumber,
+        }, {
             upsert: true
         })
     } catch(err){

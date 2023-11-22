@@ -10,18 +10,18 @@ const Launch = props => {
   // Test hooks;
   useEffect(()=>{
     axios(`http://localhost:8000/planets`)
-    .then(async (response)=>{
+    .then((response)=>{
       console.log(response);
       setPlanets(response.data);
     })
     .catch((err)=>{
-      throw new Error(err.message); 
+      throw new Error(`Coundn't fetch data: ${err.message}`); 
     })
   },[])
 
   const selectorBody = useMemo(() => {
     return planets?.map(planet =>
-      <option value={planet.keplerName} key={planet.keplerName}>{planet.keplerName}</option>
+      <option value={planet.keplerName} key={planet._id}>{planet.keplerName}</option>
     );
   }, [planets]);
 

@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const API_URL = 'http://localhost:8000';
+
 // Load planets and return.
 async function httpGetPlanets() {
   try{
