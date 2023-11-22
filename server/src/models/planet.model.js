@@ -30,12 +30,11 @@ async function loadPlanetsData(){
             console.log(`${countFoundPlanets} planets are similar to earth.`);
             resolve();
         })
-        
     })
 }
 
 async function getAllPlanets(){
-    return await planets.find({},{_id: 0, __v: 0}); 
+    return await planets.find({},{ __v: 0}); 
 }
 
 async function savePlanet(planet){
@@ -46,9 +45,8 @@ async function savePlanet(planet){
             keplarName: planet.kepler_name, 
         }, {upsert: true});
     } catch (err){
-        console.error(`Could not save a planet: ${err}`);
+        console.error(`Could not save planet: ${err}`);
     }
-    
 }
 
 module.exports = {

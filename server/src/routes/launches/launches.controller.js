@@ -3,8 +3,8 @@ const { getAllLaunches,
         abortLaunch, 
         existsLaunchWithId } = require('../../models/launches.model.js');
 
-function httpGetAllLaunches(req, res){
-    return res.status(200).json(getAllLaunches());
+async function httpGetAllLaunches(req, res){
+    return res.status(200).json(await getAllLaunches());
 }
 
 function httpAddNewLaunch (req, res){
@@ -12,7 +12,7 @@ function httpAddNewLaunch (req, res){
     const { mission, launchDate, target, rocket } = req.body;
     if(!mission || !launchDate || !target || !rocket){
         return res.status(400).json({
-            error: "Missing required launch property."
+            error: "Missing required launch property." 
         })
     }
     launch.launchDate = new Date(launch.launchDate);
