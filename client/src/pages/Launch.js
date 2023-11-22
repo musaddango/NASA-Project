@@ -11,6 +11,7 @@ const Launch = props => {
   useEffect(()=>{
     axios(`http://localhost:8000/planets`)
     .then(async (response)=>{
+      console.log(response);
       setPlanets(response.data);
     })
     .catch((err)=>{
