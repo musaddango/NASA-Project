@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "NASA MISSION CONTROL API",
   "main": "server.js",
+  "jest":{
+    "testEnvironment": "node"
+  },
   "scripts": {
     "production": "pm2 start server.js -i max -l logs.txt",
     "watch": "nodemon server.js",
