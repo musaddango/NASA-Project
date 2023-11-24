@@ -1,29 +1,13 @@
-import { useMemo, useState, useEffect } from "react";
-import axios from 'axios';
+import { useMemo } from "react";
 import { Appear, Button, Loading, Paragraph } from "arwes";
 import Clickable from "../components/Clickable";
 
-
-
 const Launch = props => {
-  const [planets, setPlanets] = useState([]);
-  // Test hooks;
-  useEffect(()=>{
-    axios(`http://localhost:8000/planets`)
-    .then((response)=>{
-      console.log(response);
-      setPlanets(response.data);
-    })
-    .catch((err)=>{
-      throw new Error(`Coundn't fetch data: ${err.message}`); 
-    })
-  },[])
-
   const selectorBody = useMemo(() => {
-    return planets?.map(planet =>
-      <option value={planet.keplerName} key={planet._id}>{planet.keplerName}</option>
+    return props.planets?.map(planet => 
+      <option value={planet.keplerName} key={planet.keplerName}>{planet.keplerName}</option>
     );
-  }, [planets]);
+  }, [props.planets]);
 
   const today = new Date().toISOString().split("T")[0];
 
@@ -39,7 +23,7 @@ const Launch = props => {
       <label htmlFor="launch-day">Launch Date</label>
       <input type="date" id="launch-day" name="launch-day" min={today} max="2040-12-31" defaultValue={today} />
       <label htmlFor="mission-name">Mission Name</label>
-      <input type="text" id="mission-name" name="mission-name" autoComplete="on" />
+      <input type="text" id="mission-name" name="mission-name" />
       <label htmlFor="rocket-name">Rocket Type</label>
       <input type="text" id="rocket-name" name="rocket-name" defaultValue="Explorer IS1" />
       <label htmlFor="planets-selector">Destination Exoplanet</label>
@@ -52,7 +36,7 @@ const Launch = props => {
           type="submit" 
           layer="success" 
           disabled={props.isPendingLaunch}>
-          Launch Mission 
+          Launch Mission ✔
         </Button>
       </Clickable>
       {props.isPendingLaunch &&

@@ -30,7 +30,7 @@ async function saveLaunch(launch){
     
     let latestFlightNumber = await getLatestFlightNumber();
     const planetAvailable = await planets.findOne({
-        keplarName: launch.target,
+        keplerName: launch.target,
     });
     
     if(!planetAvailable){
