@@ -13,13 +13,13 @@ describe("Launch Route APIs Test", ()=>{
 
     describe("Test /launches routes", ()=>{
         test("It should respond with 200 success", async ()=>{
-            const response = await request(app).get('/launches');
+            const response = await request(app).get('/v1/launches');
             expect(response.status).toBe(200)
             
         });
     });
     
-    describe("Test POST /launch", ()=>{
+    describe("Test POST /v1/launch", ()=>{
     
         const completeSentData = {
             mission: "USS Enterprise",
@@ -34,7 +34,7 @@ describe("Launch Route APIs Test", ()=>{
         }
         test("It should respond with 201 created", async ()=>{
             const response = await request(app)
-                .post("/launches")
+                .post("/v1/launches")
                 .send(completeSentData)
                 .expect("Content-Type",/json/)
                 .expect(201);
@@ -48,7 +48,7 @@ describe("Launch Route APIs Test", ()=>{
     
         test("It should respond with 400 bad request",async ()=>{
             const response = await request(app)
-                .post("/launches")
+                .post("/v1/launches")
                 .send(sentDataWithoutDate)
                 .expect("Content-Type",/json/)
                 .expect(400);
@@ -59,7 +59,7 @@ describe("Launch Route APIs Test", ()=>{
     
         test("It should catch Invalid launch date input",async ()=>{
             const response = await request(app)
-                .post("/launches")
+                .post("/v1/launches")
                 .send({...sentDataWithoutDate, launchDate: "nothing"})
                 .expect("Content-Type",/json/)
                 .expect(400);

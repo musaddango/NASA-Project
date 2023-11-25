@@ -11,6 +11,6 @@ describe("Test /planets routes", ()=>{
     })
 
     test("GET /planets should return a 200 status code",async ()=>{
-        await request(app).get("/planets").expect(200);
+        await request(app).get("/v1/planets").expect(200);
     })
 })
