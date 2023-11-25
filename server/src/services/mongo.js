@@ -1,7 +1,8 @@
+require('dotenv').config()
 const mongoose = require('mongoose');
 
 // With commonJS where top level await doesn't work, the following logic will surfice;
-const MONGO_URL = "mongodb+srv://nasa-api:R4Od323wteqrqQE0@nasacluster.qzjge7j.mongodb.net/nasa?retryWrites=true&w=majority"
+const MONGO_URL = process.env.MONGO_URL;
 
 mongoose.connection.once('open',()=>{
     console.log(`MongoDB connection opened.`);
