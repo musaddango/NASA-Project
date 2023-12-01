@@ -7,7 +7,7 @@ const { loadPlanetsData } = require('../../models/planet.model.js');
 describe("Launch Route APIs Test", ()=>{
     beforeAll(async ()=>{
         await mongoseConnect();
-        await loadLaunchData();
+        // await loadLaunchData();
         await loadPlanetsData();
     });
 
