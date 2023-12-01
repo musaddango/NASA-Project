@@ -6,7 +6,7 @@ const { loadLaunchData } = require('../../models/launches.model.js');
 describe("Launch Route APIs Test", ()=>{
     beforeAll(async ()=>{
         await mongoseConnect();
-        await loadLaunchData();
+        await loadLaunchData()
     });
 
     afterAll(async ()=>{
