@@ -8,7 +8,7 @@ describe("Launch Route APIs Test", ()=>{
     beforeAll(async ()=>{
         await mongoseConnect();
         await loadLaunchData();
-        await loadPlanetsData
+        await loadPlanetsData();
     });
 
     afterAll(async ()=>{
